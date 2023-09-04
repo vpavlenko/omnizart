@@ -54,7 +54,7 @@ class Predictor(BasePredictor):
         os.makedirs(temp_folder, exist_ok=True)
         try:
             audio_name = str(os.path.splitext(os.path.basename(audio))[0])
-            if str(audio).endswith(".wav") or str(audio).endswith(".mid"):
+            if str(audio).endswith(".wav") or mode == 'beat':
                 wav_file_path = str(audio)
             else:
                 wav_file_path = f"{temp_folder}/{audio_name}.wav"
