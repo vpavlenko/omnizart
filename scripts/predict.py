@@ -48,7 +48,8 @@ class Predictor(BasePredictor):
         """Run a single prediction on the model"""
         print('VPDBG str(audio): ', str(audio))
         print('VPDBG mode: ', mode)
-        assert str(audio).endswith(".mp3") or str(audio).endswith(".wav") or mode == 'beat' and str(audio).endswith(".mid"), "Please upload mp3 or wav file, or mid for beat mode."
+        if mode != 'beat':
+            assert str(audio).endswith(".mp3") or str(audio).endswith(".wav") or mode == 'beat' and str(audio).endswith(".mid"), "Please upload mp3 or wav file, or mid for beat mode."
         temp_folder = "cog_temp"
         os.makedirs(temp_folder, exist_ok=True)
         try:
