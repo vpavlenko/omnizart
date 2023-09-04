@@ -46,12 +46,12 @@ class Predictor(BasePredictor):
             render_audio: bool = Input(default=False, description="Option to render to mp3"),
     ) -> Output:
         """Run a single prediction on the model"""
-        assert str(audio).endswith(".mp3") or str(audio).endswith(".wav"), "Please upload mp3 or wav file."
+        assert str(audio).endswith(".mp3") or str(audio).endswith(".wav") or mode == 'beat' and str(audio).endswith(".mid"), "Please upload mp3 or wav file, or mid for beat mode."
         temp_folder = "cog_temp"
         os.makedirs(temp_folder, exist_ok=True)
         try:
             audio_name = str(os.path.splitext(os.path.basename(audio))[0])
-            if str(audio).endswith(".wav"):
+            if str(audio).endswith(".wav") or str(audio).endswith(".mid"):
                 wav_file_path = str(audio)
             else:
                 wav_file_path = f"{temp_folder}/{audio_name}.wav"

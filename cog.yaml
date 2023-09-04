@@ -12,6 +12,6 @@ build:
     - pip install -U pip
     - pip install --upgrade cython
     - pip install pyfluidsynth
-    - pip install git+https://github.com/e7mac/omnizart.git
+    - pip install git+https://github.com/vpavlenko/omnizart.git
 
 predict: scripts/predict.py:Predictor
